@@ -7,6 +7,7 @@ const open = require('open')
 const ora = require('ora')
 const path = require('path')
 const pkg = require(path.join(process.cwd(), 'package.json'))
+const expJson = require(path.join(process.cwd(), 'exp.json'))
 const rollup = require('rollup')
 
 const embed = id => `<div data-snack-id="${id}" data-snack-platform="ios" data-snack-preview="true" style="overflow:hidden;background:#fafafa;border:1px solid rgba(0,0,0,.16);border-radius:4px;height:505px;width:100%"></div>
@@ -52,7 +53,7 @@ rollup
       body: JSON.stringify({
         code: result.code,
         manifest: {
-          sdkVersion: '16.0.0',
+          sdkVersion: expJson.sdkVersion,
           name: pkg.name,
           description: pkg.description,
         },
